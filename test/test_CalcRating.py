@@ -31,14 +31,12 @@ class TestCalcRating:
         }
         return data, rating_scores
 
+    def test_init_calc_rating(self, input_data: tuple[DataType, RatingsType]) -> None:
+        calc_rating = CalcRating(input_data[0])
+        assert input_data[0] == calc_rating.data
 
-def test_init_calc_rating(self, input_data: tuple[DataType, RatingsType]) -> None:
-    calc_rating = CalcRating(input_data[0])
-    assert input_data[0] == calc_rating.data
-
-
-def test_calc(self, input_data: tuple[DataType, RatingsType]) -> None:
-    rating = CalcRating(input_data[0]).calc()
-    for student in rating.keys():
-        rating_score = rating[student]
-        assert pytest.approx(rating_score, abs=0.001) == input_data[1][student]
+    def test_calc(self, input_data: tuple[DataType, RatingsType]) -> None:
+        rating = CalcRating(input_data[0]).calc()
+        for student in rating.keys():
+            rating_score = rating[student]
+            assert pytest.approx(rating_score, abs=0.001) == input_data[1][student]
