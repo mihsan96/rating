@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 import pytest
 from src.Types import DataType
 from src.DataReaderXML import DataReaderXML
@@ -8,8 +7,7 @@ from src.DataReaderXML import DataReaderXML
 class TestDataReaderXML:
     @pytest.fixture()
     def file_and_data_content(self) -> tuple[str, DataType]:
-        root_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = f'{root_dir}/data/data.xml'
+        file_path = './data_test.xml'
 
         data = {
             'Иванов Иван Иванович':
