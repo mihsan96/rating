@@ -8,7 +8,8 @@ from src.DataReaderXML import DataReaderXML
 class TestDataReaderXML:
     @pytest.fixture()
     def file_and_data_content(self) -> tuple[str, DataType]:
-        file_path = f'{os.path.dirname(os.path.abspath(__file__))}/data/data.xml'
+        root_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = f'{root_dir}/data/data.xml'
 
         data = {
             'Иванов Иван Иванович':
