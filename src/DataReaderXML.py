@@ -10,7 +10,8 @@ class DataReaderXML(DataReader, ABC):
         self.students = {}
 
     @staticmethod
-    def _normalize_student(name: str, scores: dict[str, int | float]) -> DataType:
+    def _normalize_student(name: str,
+                           scores: dict[str, int | float]) -> DataType:
         normalized_student = {}
         normalized_scores = []
         for subject in scores:
