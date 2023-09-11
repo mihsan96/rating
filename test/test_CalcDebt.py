@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
-import os
-import pytest
 from src.Types import DataType
-from src.DataReaderXML import DataReaderXML
+from src.CalcRating import CalcRating
+import pytest
 
 
-class TestDataReaderXML:
+class TestCalcRating:
     @pytest.fixture()
-    def file_and_data_content(self) -> tuple[str, DataType]:
-        root_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = f'{root_dir}/data_test.xml'
-
+    def input_data(self) -> tuple[DataType, int]:
         data = {
             'Иванов Иван Иванович':
                 [('математика', 67),
@@ -52,8 +48,12 @@ class TestDataReaderXML:
                 [('математика', 80),
                  ('литература', 85.0),
                  ('география', 73.0)]}
-        return file_path, data
 
-    def test_read(self, file_and_data_content: tuple[str, DataType]) -> None:
-        file_content = DataReaderXML().read(file_and_data_content[0])
-        assert file_content == file_and_data_content[1]
+        rating_scores = 1
+        return data, rating_scores
+
+    def test_init_calc_rating(self,
+                              input_data: tuple[DataType, int]) \
+            -> None:
+        calc_rating = CalcRating(input_data[0])
+        assert input_data[0] == calc_rating.data
