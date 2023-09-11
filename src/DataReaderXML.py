@@ -23,7 +23,8 @@ class DataReaderXML(DataReader, ABC):
     def _get_all_students(self, df) -> DataType:
         data = df.to_dict(orient='index')
         for student in data:
-            normalized_student = self._normalize_student(student, data[student])
+            normalized_student = self._normalize_student(student,
+                                                         data[student])
             self.students |= normalized_student
         return self.students
 
