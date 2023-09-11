@@ -10,7 +10,7 @@ class DataReaderXML(DataReader, ABC):
         self.students = {}
 
     @staticmethod
-    def _normalize_student(name, scores) -> DataType:
+    def _normalize_student(name: str, scores: dict[str, int | float]) -> DataType:
         normalized_student = {}
         normalized_scores = []
         for subject in scores:
@@ -20,7 +20,7 @@ class DataReaderXML(DataReader, ABC):
         normalized_student[name] = normalized_scores
         return normalized_student
 
-    def _get_all_students(self, df) -> DataType:
+    def _get_all_students(self, df: pd.DataFrame) -> DataType:
         data = df.to_dict(orient='index')
         for student in data:
             normalized_student = self._normalize_student(student,
