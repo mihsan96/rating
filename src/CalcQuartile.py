@@ -23,4 +23,3 @@ class CalcQuartile:
 if __name__ == "__main__":
     data = DataReaderJSON().read('../data/data.json')
     # print(data)
-    print(CalcDebt(data).calc())
